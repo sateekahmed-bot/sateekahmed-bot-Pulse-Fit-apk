@@ -1,0 +1,34 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build Debug APK",
+      "type": "shell",
+      "command": "./gradlew assembleDebug",
+      "windows": {
+        "command": ".\\gradlew.bat assembleDebug"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": ["$gradle"]
+    },
+    {
+      "label": "Install APK to Device / Emulator",
+      "type": "shell",
+      "command": "adb install -r app/build/outputs/apk/debug/app-debug.apk",
+      "dependsOn": "Build Debug APK",
+      "problemMatcher": []
+    },
+    {
+      "label": "Clean Project",
+      "type": "shell",
+      "command": "./gradlew clean",
+      "windows": {
+        "command": ".\\gradlew.bat clean"
+      },
+      "problemMatcher": ["$gradle"]
+    }
+  ]
+}
